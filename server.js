@@ -3,6 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var mime = require('mime');
 var cache = {};
+var chatServer = require('./lib/chat_server');
 
 function sendPageNotFound(response) {
 	response.writeHead(404, {
@@ -54,4 +55,6 @@ var server = http.createServer(function(request, response) {
 
 server.listen(3000, function() {
 	console.log("Server start~!");
-})
+});
+
+chatServer.listen(server);
